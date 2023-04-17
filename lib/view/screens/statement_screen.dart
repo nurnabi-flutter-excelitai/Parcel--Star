@@ -67,7 +67,9 @@ class _StatementScreenState extends State<StatementScreen> {
                                         children: [
                                           Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
+                                           // mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
+
                                               Row(
 
                                                 children:  [
@@ -75,14 +77,50 @@ class _StatementScreenState extends State<StatementScreen> {
                                                     radius: 5,
                                                     backgroundColor: Colors.red,
                                                   ),
-                                                  Text('Merchant Name',style: myStyleInter(14, AppColor.statementScreenTextColor),),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(left: 8.0),
+                                                    child: Text('Merchant Name',style: myStyleInter(14, AppColor.statementScreenTextColor,FontWeight.w400),),
+                                                  ),
 
 
 
 
                                                 ],
                                               ),
-                                              Text('Merchant Name',style: myStyleInter(14, AppColor.statementScreenTextColor),),
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 30.0, ),
+                                                child: Text('MD. HASIB',style: myStyleInter(14, AppColor.statementScreenTextColor,FontWeight.w700),),
+                                              ),
+                                            ],
+                                          ),
+
+                                          SizedBox(height: 16,),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                           // mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+
+                                              Row(
+
+                                                children:  [
+                                                  const CircleAvatar(
+                                                    radius: 5,
+                                                    backgroundColor: Colors.red,
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(left: 8.0),
+                                                    child: Text('Merchant Name',style: myStyleInter(14, AppColor.statementScreenTextColor,FontWeight.w400),),
+                                                  ),
+
+
+
+
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 30.0, ),
+                                                child: Text('MD. HASIB',style: myStyleInter(14, AppColor.statementScreenTextColor,FontWeight.w700),),
+                                              ),
                                             ],
                                           ),
 
