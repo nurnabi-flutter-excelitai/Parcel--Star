@@ -1,5 +1,7 @@
 
 
+import 'dart:js_util';
+
 import 'package:flutter/material.dart';
 import 'package:parcel_star/const/app_color.dart';
 
@@ -142,8 +144,41 @@ class _StatementListTableState extends State<StatementListTable> {
 
 
   List<StatementList> getStatementListData() {
+    List<StatementList> addTotalBalanceTable = [
+      StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
+      StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
+      StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
+      StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', '1280 '),
+      StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
+      StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
+      StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
+      StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
+      StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
+      StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
+      StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
+      StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
+      StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
 
-    return [
+    ];
+
+    /*int balance = 0;
+    int cashRecord = 0;
+    int withdrowForCharge = 0;
+    int withdraw = 0;
+    addTotalBalanceTable.forEach((element) {
+      cashRecord = cashRecord + element.
+      withdrowForCharge =
+      balance =
+      withdraw =
+    });*/
+    return addTotalBalanceTable;
+
+
+
+
+
+
+    /*return [
        StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
        StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
        StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
@@ -157,9 +192,10 @@ class _StatementListTableState extends State<StatementListTable> {
        StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
        StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
        StatementList('12.12.22', '45114244', 'Md . Sohal', 'Express Delivery', 'cash/baksh', '700 ৳', '80 ৳', '8920 ৳', ''),
-    ];
+    ];*/
 
   }
+
 
 }
 

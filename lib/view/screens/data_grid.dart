@@ -676,7 +676,7 @@ List<Transaction> getTransactionData() {
 
   int cashRecord = 0;
   int withdrowForCharge = 0;
-  int balance = 0;
+  int balance= 0;
   int withdraw = 0;
 
   addedBalanceFinalTable.forEach((element) {
