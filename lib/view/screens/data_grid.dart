@@ -79,8 +79,8 @@ class StatementDatePage extends StatefulWidget {
 }
 
 class _StatementDatePageState extends State<StatementDatePage> {
-  DateTime pickFromDate;
-  DateTime pickToDate;
+  late DateTime pickFromDate;
+  late  DateTime pickToDate;
   TextEditingController fromDateCtrl = TextEditingController();
   TextEditingController toDateCtrl = TextEditingController();
 
@@ -339,6 +339,12 @@ class _StatementDatePageState extends State<StatementDatePage> {
                                         height: 10,
                                         //  width: 10,
                                       ),
+
+
+
+
+
+
                                       Container(
                                         height: AppDimension.height(
                                             figmaHeight: 30, context: context),

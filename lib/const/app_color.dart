@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
    static const Color appbarTextColor = Color(0XFF0B4461);
    static const Color appbarIconColor = Color(0XFF0B4461);
+   static const Color appButtonColor = Color(0XFF0B4461);
    static const Color appBackgroundColor = Color(0xFFB4B4B4);
    static const Color appContainerColor = Color(0xFFFFFFFF);
    static const Color appSubTextColor = Color(0xFF454545);

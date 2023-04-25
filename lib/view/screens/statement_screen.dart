@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:parcel_star/reusable_widgets/reusable_statementscreen_container.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+
 
 import '../../const/app_color.dart';
 import '../../const/text_style.dart';
+import '../../reusable_widgets/app_inputDecoration.dart';
 import '../componets/statement_table.dart';
 
 class StatementScreen extends StatefulWidget {
@@ -14,6 +16,47 @@ class StatementScreen extends StatefulWidget {
 }
 
 class _StatementScreenState extends State<StatementScreen> {
+
+  DateTime selectedDate = DateTime.now();
+  TextEditingController fromDateController = TextEditingController();
+  TextEditingController toDateController = TextEditingController();
+
+
+
+  ///..........fromDate Method............
+  Future  _selectedFromDate(BuildContext context) async{
+    DateFormat formatter = DateFormat('dd/MM/yyyy');
+    final DateTime? pickedFromDate = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2020),
+        lastDate: DateTime(2030));
+    if(pickedFromDate!=null){
+      setState(() {
+        selectedDate = pickedFromDate;
+        fromDateController.value = TextEditingValue(text: formatter.format(pickedFromDate) );
+        //fromDateController.text = pickedFromDate.toString();
+      });
+    }
+  }
+
+
+  ///..........toDate Method............
+  Future  _selectedToDate(BuildContext context) async{
+    DateFormat formatter = DateFormat('dd/MM/yyyy');
+    final DateTime? pickedToDate = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2020),
+        lastDate: DateTime(2030));
+    if(pickedToDate!=null){
+      setState(() {
+        selectedDate = pickedToDate;
+        toDateController.value = TextEditingValue(text: formatter.format(pickedToDate) );
+        //fromDateController.text = pickedFromDate.toString();
+      });
+    }
+  }
 
 
   @override
@@ -45,12 +88,16 @@ class _StatementScreenState extends State<StatementScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+
+                    // ........first row .............
+
+
                     Row(
                       children: [
                         Expanded(
                           flex: 1,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 10.0, top: 10),
+                            padding: const EdgeInsets.only(left: 10.0, top: 10, ),
                             child: Container(
                               decoration: const BoxDecoration(
                                   color: Color(0XFFF3F4F6),
@@ -71,106 +118,107 @@ class _StatementScreenState extends State<StatementScreen> {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    Container(
-                                      height: 150,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.7),
-                                          border: Border.all(width: 0.07)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 10.0, top: 13),
-                                        child: Column(
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              // mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    const CircleAvatar(
-                                                      radius: 5,
-                                                      backgroundColor:
-                                                          Colors.red,
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 8.0),
-                                                      child: Text(
-                                                        'Merchant Name',
-                                                        style: myStyleInter(
-                                                            14,
-                                                            AppColor
-                                                                .statementScreenTextColor,
-                                                            FontWeight.w400),
+                                    Expanded(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white.withOpacity(0.7),
+                                            border: Border.all(width: 0.07)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 10.0, top: 13),
+                                          child: Column(
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                // mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      const CircleAvatar(
+                                                        radius: 5,
+                                                        backgroundColor:
+                                                            Colors.red,
                                                       ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                    left: 30.0,
-                                                  ),
-                                                  child: Text(
-                                                    'MD. HASIB',
-                                                    style: myStyleInter(
-                                                        14,
-                                                        AppColor
-                                                            .statementScreenTextColor,
-                                                        FontWeight.w700),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            const SizedBox(
-                                              height: 16,
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              // mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    const CircleAvatar(
-                                                      radius: 5,
-                                                      backgroundColor:
-                                                          Colors.red,
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 8.0),
-                                                      child: Text(
-                                                        'Merchant Name',
-                                                        style: myStyleInter(
-                                                            14,
-                                                            AppColor
-                                                                .statementScreenTextColor,
-                                                            FontWeight.w400),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets.only(
+                                                                left: 8.0),
+                                                        child: Text(
+                                                          'Merchant Name',
+                                                          style: myStyleInter(
+                                                              14,
+                                                              AppColor
+                                                                  .statementScreenTextColor,
+                                                              FontWeight.w400),
+                                                        ),
                                                       ),
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                      left: 30.0,
                                                     ),
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                    left: 30.0,
+                                                    child: Text(
+                                                      'MD. HASIB',
+                                                      style: myStyleInter(
+                                                          14,
+                                                          AppColor
+                                                              .statementScreenTextColor,
+                                                          FontWeight.w700),
+                                                    ),
                                                   ),
-                                                  child: Text(
-                                                    'MD. HASIB',
-                                                    style: myStyleInter(
-                                                        14,
-                                                        AppColor
-                                                            .statementScreenTextColor,
-                                                        FontWeight.w700),
+                                                ],
+                                              ),
+                                              const SizedBox(
+                                                height: 16,
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                // mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      const CircleAvatar(
+                                                        radius: 5,
+                                                        backgroundColor:
+                                                            Colors.red,
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets.only(
+                                                                left: 8.0),
+                                                        child: Text(
+                                                          'Merchant Name',
+                                                          style: myStyleInter(
+                                                              14,
+                                                              AppColor
+                                                                  .statementScreenTextColor,
+                                                              FontWeight.w400),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                      left: 30.0,
+                                                    ),
+                                                    child: Text(
+                                                      'MD. HASIB',
+                                                      style: myStyleInter(
+                                                          14,
+                                                          AppColor
+                                                              .statementScreenTextColor,
+                                                          FontWeight.w700),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     )
@@ -180,14 +228,119 @@ class _StatementScreenState extends State<StatementScreen> {
                             ),
                           ),
                         ),
+
+
+
                         SizedBox(
                           width: 12,
                         ),
+
+
+                        ///.....................date.......
+
+
                         Expanded(
                           flex: 1,
-                          child: Container(
-                            height: 200,
-                            child: Placeholder(),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10.0, top: 10),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                  color: Color(0XFFF3F4F6),
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                              height: 200,
+                              child:
+                              Padding(
+                                padding: const EdgeInsets.only(left: 6.0,top: 10,right: 4),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'STATEMENT DATE',
+                                      style: myStyleInter(
+                                          14,
+                                          AppColor.statementScreenTextColor,
+                                          FontWeight.w700),
+                                    ),
+
+                                    const SizedBox(
+                                      height: 10,
+                                      //  width: 10,
+                                    ),
+
+
+
+
+
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: const BorderRadius.all(Radius.circular(
+                                            5)),
+                                        border: Border.all(
+                                            color: Colors.grey),
+                                      ),
+                                      child: TextFormField(
+                                        controller: fromDateController,
+                                        //editing controller of this TextField
+                                        decoration:  appTextFormFiledInputDecoration(),
+                                        readOnly: true,
+                                        onTap: (){
+                                          _selectedFromDate(context);
+                                        }
+                                      ),
+                                    ),
+                                     const SizedBox(
+                                      height: 10,
+                                      //  width: 10,
+                                    ),
+
+                                    // to date textformfiled...............................
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: const BorderRadius.all(Radius.circular(
+                                            5)),
+                                        border: Border.all(
+                                            color: Colors.grey),
+                                      ),
+                                      child: TextFormField(
+                                          controller: toDateController,
+                                          //editing controller of this TextField
+                                          decoration:  appTextFormFiledInputDecoration(),
+                                          readOnly: true,
+                                          onTap: (){
+                                            _selectedToDate(context);
+                                          }
+                                      ),
+                                    ),
+
+                                     SizedBox(
+                                      height: 12,
+                                      //  width: 10,
+                                    ),
+
+                                    Expanded(
+                                      child: SizedBox(
+                                        width: double.infinity,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(bottom: 8.0),
+                                          child: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor: AppColor.appButtonColor,
+                                              ),
+                                              onPressed: (){}, child: Text('Search',style: myStyleInter(14, Colors.white,FontWeight.w700),)),
+                                        ),
+                                      ),
+                                    )
+
+
+
+
+
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -195,6 +348,10 @@ class _StatementScreenState extends State<StatementScreen> {
                     SizedBox(
                       height: 15,
                     ),
+
+
+                    //...........2nd row.............
+
                     Text(
                       'STATEMENT DATE',
                       style:
@@ -321,6 +478,10 @@ class _StatementScreenState extends State<StatementScreen> {
           ),
         ));
   }
+
+
+
+
 }
 
 
