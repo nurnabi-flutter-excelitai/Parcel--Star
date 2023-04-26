@@ -2,37 +2,22 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:parcel_star/const/app_color.dart';
 import 'package:parcel_star/const/text_style.dart';
-import 'package:parcel_star/model_class/bar_data.dart';
+import 'package:parcel_star/view/componets/custom_barchart.dart';
 
 class ParcelStatementScreen extends StatefulWidget {
-  const ParcelStatementScreen({Key? key}) : super(key: key);
+
+   ParcelStatementScreen({Key? key}) : super(key: key);
 
   @override
   State<ParcelStatementScreen> createState() => _ParcelStatementScreenState();
 }
 
 class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
-  List<double> weeklySummer = [
-    4.40,
-    2.52,
-    10.50,
-    100.0,
-    38.5,
-    63.5,
-    5.0,
-  ];
+
 
   @override
   Widget build(BuildContext context) {
-    Bardata myBarData = Bardata(
-        saturdayAmount: weeklySummer[0],
-        sundayAmount: weeklySummer[1],
-        mondayAmount: weeklySummer[2],
-        tuesdayAmount: weeklySummer[3],
-        wednesdayAmount: weeklySummer[4],
-        thursdayAmount: weeklySummer[5],
-        fridayAmont: weeklySummer[6]);
-    myBarData.initilizeBarData();
+
 
     return Scaffold(
       backgroundColor: AppColor.appBackgroundColor,
@@ -132,11 +117,13 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                                       AppColor.appbarTextColor,
                                       FontWeight.w500),
                                 ),
-                                Text('1940 taka',
-                                    style: myStyleInter(
-                                        16,
-                                        AppColor.appBalanceColor,
-                                        FontWeight.w500))
+                                Expanded(
+                                  child: Text('1940 taka',
+                                      style: myStyleInter(
+                                          16,
+                                          AppColor.appBalanceColor,
+                                          FontWeight.w500)),
+                                )
                               ],
                             )
                           ],
@@ -145,25 +132,120 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-              height: 400,
-              child: BarChart(BarChartData(
-                  maxY: 100,
-                  minY: 0,
-                  barGroups: myBarData.barData
-                      .map((data) => BarChartGroupData(x: data.x, barRods: [
-                            BarChartRodData(
-                                toY: data.y, 
-                                color: Colors.red, 
-                                width: 20,
-                                borderRadius: BorderRadius.circular(12)
-                            )
-                          ]))
-                      .toList())),
+            Container(
+              margin: EdgeInsets.only(left: 16,right: 16,top: 14),
+              height: 463,
+              decoration: const BoxDecoration(
+                  color: AppColor.appPrimaryColor,
+                borderRadius: BorderRadius.all(Radius.circular(10))
+              ),
+              child: Column(
+                children: [
+                  Container (
+                    height: 52,
+                    decoration: const BoxDecoration(
+                      color: AppColor.appPrimaryColor,
+                     borderRadius: BorderRadius.only(topLeft:Radius.circular(10),topRight: Radius.circular(10))
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                       Container(
+
+                         decoration: BoxDecoration(
+                           color: Colors.red,
+                           image: DecorationImage(image: AssetImage( 'assests/images/parcelstaricon.png',),fit: BoxFit.contain)
+                         ),
+                       )
+                      ],
+                    ),
+                  ),
+
+
+
+
+
+
+
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10))
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 39,right: 39,top: 34),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+
+                                ///....................>>> Delivery Success Rate......<<
+
+                                Column(
+
+                                  children: [
+                                    CustomBarChartWidget(value: 80,
+                                      barChartForegroundColor: AppColor.barChartDelSucForgroundColor),
+
+                                    SizedBox(height: 10,),
+                                    Text('Delivery\nSucess\nRate',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center,)
+                                  ],
+
+                                ),
+
+
+                                ///....................>>> total pending. chart.......<<
+                                Column(
+
+                                  children: [
+                                    CustomBarChartWidget(value: 10, barChartForegroundColor: AppColor.barCharTotalPendinForgroundColor,),
+                                    SizedBox(height: 10,),
+                                    Text('Total\nPending',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center)
+                                  ],
+                                ),
+
+                                ///....................>>> Assigned Parcel. chart.......<<
+                                Column(
+
+                                  children: [
+                                    CustomBarChartWidget(value: 90, barChartForegroundColor: AppColor.barCharAsinPercelForgroundColor,),
+
+
+                                    SizedBox(height: 10,),
+                                    Text('Assigned\nParcel',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center)
+                                  ],
+                                ),
+
+                                ///....................>>> Cancel Parcel. chart.......<<
+                                Column(
+
+                                  children: [
+                                    CustomBarChartWidget(value: 45, barChartForegroundColor: AppColor.barChartCancelParcelForgroundColor,),
+                                    SizedBox(height: 10,),
+                                    Text('Cancel\nParcel',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center)
+                                  ],
+                                ),
+
+
+
+
+                              ],
+                            ),
+                          ),
+
+                        ],
+                      ),
+
+                    ),
+                  )
+                ],
+              ),
+
             )
+
           ],
         ),
       ),
