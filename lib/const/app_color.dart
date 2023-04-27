@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
    static const Color barCharAsinPercelForgroundColor = Color(0xFF0D99FF);
    static const Color barChartCancelParcelForgroundColor = Color(0xFFED3E3E);
    static const Color appPrimaryColor = Color(0XFF0B4461);
+   static const Color parcelStatementPageTextColor = Color(0XFF666666);
 
 
 
