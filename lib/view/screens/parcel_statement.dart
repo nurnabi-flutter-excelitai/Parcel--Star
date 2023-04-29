@@ -19,6 +19,7 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColor.appBackgroundColor,
       appBar: AppBar(
@@ -76,14 +77,20 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(4)),
                               ),
-                              child: Center(
+                              child: FittedBox(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                'ID : 124578',
-                                style: myStyleInter(
-                                    14,
-                                    AppColor.appProfileIdColor,
-                                    FontWeight.w400),
-                              )),
+                                    'ID : 124578',
+                                    style: myStyleInter(
+                                        14,
+                                        AppColor.appProfileIdColor,
+                                        FontWeight.w400),textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              )
+
+
                             )
                           ],
                         ),
@@ -111,23 +118,23 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                               style: myStyleInter(14, AppColor.appSubTextColor,
                                   FontWeight.w400),
                             ),
-                            Row(
-                              children: [
-                                Text(
-                                  'Balance :',
-                                  style: myStyleInter(
-                                      16,
-                                      AppColor.appbarTextColor,
-                                      FontWeight.w500),
-                                ),
-                                Expanded(
-                                  child: Text('1940 taka',
+                            FittedBox(
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Balance :',
+                                    style: myStyleInter(
+                                        16,
+                                        AppColor.appbarTextColor,
+                                        FontWeight.w500),
+                                  ),
+                                  Text('1940 taka',
                                       style: myStyleInter(
                                           16,
                                           AppColor.appBalanceColor,
-                                          FontWeight.w500)),
-                                )
-                              ],
+                                          FontWeight.w500))
+                                ],
+                              ),
                             )
                           ],
                         ),
@@ -135,9 +142,17 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                 ],
               ),
             ),
+
+
+
+
+            ///.........>> seconnd container.........<<
+
+
             Container(
               margin: EdgeInsets.only(left: 16, right: 16, top: 14),
-              height: 463,
+              height: 472,
+              width: size*(328/360),
               decoration: const BoxDecoration(
                   color: AppColor.appPrimaryColor,
                   borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -152,14 +167,14 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(10))),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(
                               left: 10.0, top: 8, bottom: 8),
                           child: Container(
                             height: 26,
-                            width: 100,
+                            width: size*(100/360),
                             decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(12)),
@@ -172,13 +187,16 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                           ),
                         ),
 
-                        /// ..............dropdown button....................
+                        /// ..............>>>dropdown button.....<<...............
+
+
 
                         Padding(
                           padding:
                               EdgeInsets.only(right: 10.0, top: 7, bottom: 7),
                           child: DropdownButtonHideUnderline(
                               child: DropdownButton2(
+
                             items: <String>[
                               'Week Outcome',
                               'Monthly Outcome',
@@ -193,22 +211,51 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                               );
                             }).toList(),
                             value: _chosenValue,
+
+
+
+
+
+
+
                             hint: Text(
                               "Today Outcome",
                               style: myStyleInter(
                                   12, AppColor.appButtonColor, FontWeight.w700),
                             ),
+                              /*  customButton: Row(
+                                  children:const [
+
+                                    Text(
+                                      "References",
+                                    ),
+                                   Icon(
+                                      Icons.plus_one,
+                                      size: 12,
+                                    ),
+                                  ],
+                                ),*/
+
+
+
+
+
+
+
+
+
                             onChanged: (value) {
                               setState(() {
                                 _chosenValue = value;
                               });
                             },
 
-                            ///.......dropdown button style
+                            ///......>>>.....dropdown button style  part ......<<
 
                             buttonStyleData: ButtonStyleData(
+
                               height: 28,
-                              //width: 150,
+                               //width: size*(140/360),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.white,
@@ -216,8 +263,8 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                               elevation: 2,
                             ),
 
+
                             dropdownStyleData: DropdownStyleData(
-                              padding: null,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(14),
                                 color: Colors.white,
@@ -235,6 +282,10 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                       ],
                     ),
                   ),
+
+                  ///..........................>> bar Chart Design....<<..........................
+
+
 
                   Expanded(
                     child: Container(
@@ -285,6 +336,7 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
 
 
 
+
                                 ],
                               ),
                             ),
@@ -296,20 +348,30 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                             padding: const EdgeInsets.only(
                                 left: 39, right: 39,),
                             child: Row(
+
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('Delivery\nSucess\nRate',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center,),
+
+                                ///......>>old code.<<......
+                                /*Text('Delivery\nSucess\nRate',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center,),
                                 Text('Total\nPending',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center),
                                 Text('Assigned\nParcel',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center),
-                                Text('Cancel\nParcel',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center)
+                                Text('Cancel\nParcel',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center)*/
+
+                                Flexible(child: Text('Delivery\nSucess\nRate',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center,)),
+                                Flexible(child: Text('Total\nPending',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center)),
+                                Flexible(child: Text('Assigned\nParcel',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center)),
+                                Flexible(child: Text('Cancel\nParcel',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center))
+
+
                               ],
                             ),
                           ),
 
 
 
-                          SizedBox(height: 32,),
+                          SizedBox(height: 30,),
 
 
                           Row(
@@ -401,76 +463,7 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
 
 
 
-                          /*Padding(
-                            padding: const EdgeInsets.only(bottom: 10.0,left: 34,top: 25),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
 
-                              children: [
-                                Row(
-
-                                  children: [
-                                    Container(
-                                      height: 10,
-                                      width: 10,
-                                      color: Colors.red,
-                                    ),
-                                    SizedBox(width: 12,),
-                                    Text('Total Delivered Parcel  :',style: myStyleInter(12, AppColor.parcelStatementPageTextColor,FontWeight.w700),),
-                                    SizedBox(width: 10,),
-                                    Text('5000',style: myStyleInter(12, AppColor.barChartDelSucForgroundColor,FontWeight.w700),)
-
-                                  ],
-                                ),
-                                Row(
-
-                                  children: [
-                                    Container(
-                                      height: 10,
-                                      width: 10,
-                                      color: AppColor.barCharTotalPendinForgroundColor,
-                                    ),
-                                    SizedBox(width: 12,),
-                                    Text('Total Pending Parcel     :',style: myStyleInter(12, AppColor.parcelStatementPageTextColor,FontWeight.w700),),
-                                    SizedBox(width: 10,),
-
-                                    Text('5000',style: myStyleInter(12, AppColor.barChartDelSucForgroundColor,FontWeight.w700),)
-
-                                  ],
-                                ),
-                                Row(
-
-                                  children: [
-                                    Container(
-                                      height: 10,
-                                      width: 10,
-                                      color: AppColor.barCharAsinPercelForgroundColor,
-                                    ),
-                                    SizedBox(width: 12,),
-                                    Text('Total Assigned Parcel  :',style: myStyleInter(12, AppColor.parcelStatementPageTextColor,FontWeight.w700),),
-                                    SizedBox(width: 10,),
-                                    Text('5000',style: myStyleInter(12, AppColor.barChartDelSucForgroundColor,FontWeight.w700),)
-
-                                  ],
-                                ),
-                                Row(
-
-                                  children: [
-                                    Container(
-                                      height: 10,
-                                      width: 10,
-                                      color: Colors.red,
-                                    ),
-                                    SizedBox(width: 12,),
-                                    Text('Total Cancel Parcel       : ',style: myStyleInter(12, AppColor.parcelStatementPageTextColor,FontWeight.w700),),
-                                    SizedBox(width: 12,),
-                                    Text('5000',style: myStyleInter(12, AppColor.barChartDelSucForgroundColor,FontWeight.w700),)
-
-                                  ],
-                                ),
-                              ],
-                            ),
-                          )*/
 
 
 
@@ -480,7 +473,7 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
