@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:parcel_star/const/app_color.dart';
 import 'package:parcel_star/const/text_style.dart';
 import 'package:parcel_star/view/componets/custom_barchart.dart';
+import 'package:parcel_star/view/screens/statement_screen.dart';
 
 class ParcelStatementScreen extends StatefulWidget {
   ParcelStatementScreen({Key? key}) : super(key: key);
@@ -30,7 +31,10 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
           style: myStyleInter(18, AppColor.appbarTextColor, FontWeight.w500),
         ),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>StatementScreen()));
+
+          },
           icon: Icon(
             Icons.arrow_back_ios_new,
             color: AppColor.appbarIconColor,
@@ -397,7 +401,7 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                                     width: 10,
                                     color: AppColor.barCharTotalPendinForgroundColor,
                                   ),
-                                  SizedBox(height: 5,),
+                                  SizedBox(height: 6,),
 
 
 
@@ -406,7 +410,7 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                                     width: 10,
                                     color: AppColor.barCharAsinPercelForgroundColor,
                                   ),
-                                  SizedBox(height: 5,),
+                                  SizedBox(height: 6,),
 
 
                                   Container(
