@@ -151,7 +151,7 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
 
             Container(
               margin: EdgeInsets.only(left: 16, right: 16, top: 14),
-              height: 472,
+              height: 478,
               width: size*(328/360),
               decoration: const BoxDecoration(
                   color: AppColor.appPrimaryColor,
@@ -293,6 +293,8 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(
@@ -371,7 +373,7 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
 
 
 
-                          SizedBox(height: 30,),
+                          SizedBox(height: 23,),
 
 
                           Row(
@@ -458,6 +460,11 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                                 ),
                               )
                             ],
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0,top: 16,),
+                            child: Expanded(child: Text('Date : 6 jan 2023 ',style: myStyleInter(12, AppColor.appPrimaryColor,FontWeight.w700),)),
                           )
 
 
