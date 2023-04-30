@@ -27,8 +27,9 @@ class _CustomBarChartWidgetState extends State<CustomBarChartWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size.width;
     return  Container(
-        width: 40,
+        width: size*(40/360),
         height: 200,
         decoration: const BoxDecoration(
             color: AppColor.appChartBackgroundColor,
@@ -38,7 +39,7 @@ class _CustomBarChartWidgetState extends State<CustomBarChartWidget> {
 
           children: <Widget>[
             AnimatedPositioned(
-              width: selected ? 40.0 : 40.0,
+              width: selected ? size*(40/360) : size*(40/360),
               height: selected ? (200*widget.value/100) : 10.0,
               //height: selected ? (200*value/100) :10.0,
               bottom: selected ? 0.0 : 0.0,
@@ -57,7 +58,7 @@ class _CustomBarChartWidgetState extends State<CustomBarChartWidget> {
                   ),
                   child:  Center(child: Transform.rotate(
                       angle: -math.pi / 4,
-                      child: Text(widget.value.toString()+'%',style: myStyleInter(12, Colors.white,FontWeight.w700))),),
+                      child: Text(widget.value.toString()+'%',style: myStyleInter(size*(12/360), Colors.white,FontWeight.w700))),),
                 ),
               ),
             ),

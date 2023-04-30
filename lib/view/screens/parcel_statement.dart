@@ -20,8 +20,8 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.appBackgroundColor,
       appBar: AppBar(
         elevation: 0,
@@ -155,7 +155,7 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
 
             Container(
               margin: EdgeInsets.only(left: 16, right: 16, top: 14),
-              height: 478,
+              //height: 475,
               width: size*(328/360),
               decoration: const BoxDecoration(
                   color: AppColor.appPrimaryColor,
@@ -164,6 +164,7 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                 children: [
                   ///.......icon container..........
                   Container(
+                    width: size*(328/360),
                     height: 52,
                     decoration: const BoxDecoration(
                         color: AppColor.appPrimaryColor,
@@ -171,74 +172,56 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(10))),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(
                               left: 10.0, top: 8, bottom: 8),
                           child: Container(
-                            height: 26,
+                            height: 20,
                             width: size*(100/360),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(12)),
                                 color: Colors.white,
                                 image: DecorationImage(
+
                                     image: AssetImage(
                                       'assests/images/parcelstaricon.png',
                                     ),
-                                    fit: BoxFit.contain)),
+                                    //fit: BoxFit.contain
+                                  )
+                            ),
                           ),
                         ),
 
-                        /// ..............>>>dropdown button.....<<...............
-
-
+                       /// ..............>>>dropdown button.....<<...............
 
                         Padding(
                           padding:
                               EdgeInsets.only(right: 10.0, top: 7, bottom: 7),
-                          child: DropdownButtonHideUnderline(
-                              child: DropdownButton2(
+                          child: SizedBox(
+                            //height: 30,
+                            width: size*(140/360),
+                            child: DropdownButtonHideUnderline(
+                                child: FittedBox(
+                                  child: DropdownButton2(
+                                    //isExpanded: true,
 
-                            items: <String>[
-                              'Week Outcome',
-                              'Monthly Outcome',
-                            ].map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(
-                                  value,
-                                  style: myStyleInter(12,
-                                      AppColor.appButtonColor, FontWeight.w700),
-                                ),
-                              );
-                            }).toList(),
-                            value: _chosenValue,
-
-
-
-
-
-
-
-                            hint: Text(
-                              "Today Outcome",
-                              style: myStyleInter(
-                                  12, AppColor.appButtonColor, FontWeight.w700),
-                            ),
-                              /*  customButton: Row(
-                                  children:const [
-
-                                    Text(
-                                      "References",
+                              items: <String>[
+                                  'Week Outcome',
+                                  'Monthly Outcome',
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(
+                                      value,
+                                      style: myStyleInter(12,
+                                          AppColor.appButtonColor, FontWeight.w700),
                                     ),
-                                   Icon(
-                                      Icons.plus_one,
-                                      size: 12,
-                                    ),
-                                  ],
-                                ),*/
+                                  );
+                              }).toList(),
+                              value: _chosenValue,
 
 
 
@@ -246,43 +229,76 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
 
 
 
-
-
-                            onChanged: (value) {
-                              setState(() {
-                                _chosenValue = value;
-                              });
-                            },
-
-                            ///......>>>.....dropdown button style  part ......<<
-
-                            buttonStyleData: ButtonStyleData(
-
-                              height: 28,
-                               //width: size*(140/360),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white,
+                              hint: Text(
+                                  "Today Outcome",
+                                  style: myStyleInter(
+                                      12, AppColor.appButtonColor, FontWeight.w700),
                               ),
-                              elevation: 2,
+
+                        /* customButton: Row(
+                                      children:const [
+
+                                        Text(
+                                          "References",
+                                        ),
+                                       Icon(
+                                          Icons.plus_one,
+                                          size: 12,
+                                        ),
+                                      ],
+                                    ),*/
+
+
+
+
+
+
+
+
+
+                              onChanged: (value) {
+                                  setState(() {
+                                    _chosenValue = value;
+                                  });
+                              },
+
+                              ///......>>>.....dropdown button style  part ......<<
+
+                              buttonStyleData: ButtonStyleData(
+
+                                    height: 28,
+                                   //width: size*(140/360),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white,
+                                  ),
+                                  elevation: 2,
+                              ),
+
+
+                              dropdownStyleData: DropdownStyleData(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(14),
+                                    color: Colors.white,
+                                  ),
+                                  elevation: 8,
+                                  scrollbarTheme: ScrollbarThemeData(
+                                    radius: const Radius.circular(40),
+                                    thickness: MaterialStateProperty.all<double>(6),
+                                    thumbVisibility:
+                                        MaterialStateProperty.all<bool>(true),
+                                  ),
+                              ),
                             ),
+                                )),
+                          ),
+                        ),
+                        ///.............> custom dropdown button.....<<.......
 
 
-                            dropdownStyleData: DropdownStyleData(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(14),
-                                color: Colors.white,
-                              ),
-                              elevation: 8,
-                              scrollbarTheme: ScrollbarThemeData(
-                                radius: const Radius.circular(40),
-                                thickness: MaterialStateProperty.all<double>(6),
-                                thumbVisibility:
-                                    MaterialStateProperty.all<bool>(true),
-                              ),
-                            ),
-                          )),
-                        )
+
+
+
                       ],
                     ),
                   ),
@@ -291,195 +307,203 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
 
 
 
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                  Container(
+                    width: size*(328/360),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
 
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 39, right: 39, top: 34),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: Color(0XFFC7C7C7),
-                                    width: 1
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 39, right: 39, top: 34),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(
+                                  color: Color(0XFFC7C7C7),
+                                  width: 1
 
-                                  )
                                 )
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ///....................>>> Delivery Success Rate......<<
-                                  CustomBarChartWidget(
-                                      value: 80,
-                                      barChartForegroundColor:
-                                          AppColor.barChartDelSucForgroundColor),
-                                  ///....................>>> total pending. chart.......<<
-                                  CustomBarChartWidget(
-                                      value: 30,
-                                      barChartForegroundColor:
-                                          AppColor.barCharTotalPendinForgroundColor),
-                                  ///....................>>> Assigned Parcel. chart.......<<
-                                  CustomBarChartWidget(
-                                      value: 45,
-                                      barChartForegroundColor:
-                                          AppColor.barCharAsinPercelForgroundColor),
-
-                                  ///....................>>> Cancel Parcel. chart.......<<
-                                  CustomBarChartWidget(
-                                      value: 65,
-                                      barChartForegroundColor:
-                                          AppColor.barChartCancelParcelForgroundColor),
-
-
-
-
-
-                                ],
-                              ),
+                              )
                             ),
-                          ),
-
-                          SizedBox(height: 10,),
-
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 39, right: 39,),
                             child: Row(
-
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
+                                ///....................>>> Delivery Success Rate......<<
+                                CustomBarChartWidget(
+                                    value: 80,
+                                    barChartForegroundColor:
+                                        AppColor.barChartDelSucForgroundColor),
+                                ///....................>>> total pending. chart.......<<
+                                CustomBarChartWidget(
+                                    value: 30,
+                                    barChartForegroundColor:
+                                        AppColor.barCharTotalPendinForgroundColor),
+                                ///....................>>> Assigned Parcel. chart.......<<
+                                CustomBarChartWidget(
+                                    value: 45,
+                                    barChartForegroundColor:
+                                        AppColor.barCharAsinPercelForgroundColor),
 
-                                ///......>>old code.<<......
-                                /*Text('Delivery\nSucess\nRate',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center,),
-                                Text('Total\nPending',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center),
-                                Text('Assigned\nParcel',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center),
-                                Text('Cancel\nParcel',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center)*/
+                                ///....................>>> Cancel Parcel. chart.......<<
+                                CustomBarChartWidget(
+                                    value: 65,
+                                    barChartForegroundColor:
+                                        AppColor.barChartCancelParcelForgroundColor),
 
-                                Flexible(child: Text('Delivery\nSucess\nRate',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center,)),
-                                Flexible(child: Text('Total\nPending',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center)),
-                                Flexible(child: Text('Assigned\nParcel',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center)),
-                                Flexible(child: Text('Cancel\nParcel',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center))
+
+
 
 
                               ],
                             ),
                           ),
+                        ),
 
+                        SizedBox(height: 10,),
 
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 39, right: 39,),
+                          child: Row(
 
-                          SizedBox(height: 23,),
-
-
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    height: 10,
-                                    width: 10,
-                                    color: AppColor.barChartDelSucForgroundColor,
-                                  ),
-                                  SizedBox(height: 5,),
 
+                              ///......>>old code.<<......
+                              /*Text('Delivery\nSucess\nRate',style: myStyleInter(size*(12/360), AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center,),
+                              Text('Total\nPending',style: myStyleInter(size*(12/360),AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center),
+                              Text('Assigned\nParcel',style: myStyleInter(size*(12/360), AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center),
+                              Text('Cancel\nParcel',style: myStyleInter(size*(12/360), AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center)*/
 
-                                  Container(
-                                    height: 10,
-                                    width: 10,
-                                    color: AppColor.barCharTotalPendinForgroundColor,
-                                  ),
-                                  SizedBox(height: 6,),
+                              Flexible(child: Text('Delivery\nSucess\nRate',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center,)),
+                              Flexible(child: Text('Total\nPending',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center)),
+                              Flexible(child: Text('Assigned\nParcel',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center)),
+                              Flexible(child: Text('Cancel\nParcel',style: myStyleInter(12, AppColor.appSubTextColor,FontWeight.w700),textAlign: TextAlign.center))
 
-
-
-                                  Container(
-                                    height: 10,
-                                    width: 10,
-                                    color: AppColor.barCharAsinPercelForgroundColor,
-                                  ),
-                                  SizedBox(height: 6,),
-
-
-                                  Container(
-                                    height: 10,
-                                    width: 10,
-                                    color: AppColor.barChartCancelParcelForgroundColor,
-                                  ),
-
-
-                                ],
-                              ),
-
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15.0,right: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('Total Delivered Parcel',style: myStyleInter(12, AppColor.parcelStatementPageTextColor,FontWeight.w700),),
-
-
-                                    Text('Total Delivered Parcel',style: myStyleInter(12, AppColor.parcelStatementPageTextColor,FontWeight.w700),),
-
-
-                                    Text('Total Assigned Parcel',style: myStyleInter(12, AppColor.parcelStatementPageTextColor,FontWeight.w700),),
-
-
-                                    Text('Total Cancel Parcel',style: myStyleInter(12, AppColor.parcelStatementPageTextColor,FontWeight.w700),),
-                                  ],
-                                ),
-                              ),
-                              Column(
-                                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(':',style: myStyleInter(12, AppColor.barChartDelSucForgroundColor,FontWeight.w700)),
-                                  Text(':',style: myStyleInter(12, AppColor.barChartDelSucForgroundColor,FontWeight.w700)),
-                                  Text(':',style: myStyleInter(12, AppColor.barChartDelSucForgroundColor,FontWeight.w700)),
-                                  Text(':',style: myStyleInter(12, AppColor.barChartDelSucForgroundColor,FontWeight.w700)),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10.0),
-                                child: Column(
-
-                                  children: [
-                                    Text('5000',style: myStyleInter(12, AppColor.barChartDelSucForgroundColor,FontWeight.w700),),
-                                    Text('5000',style: myStyleInter(12, AppColor.barCharTotalPendinForgroundColor,FontWeight.w700),),
-                                    Text('5000',style: myStyleInter(12, AppColor.barCharAsinPercelForgroundColor,FontWeight.w700),),
-                                    Text('5000',style: myStyleInter(12, AppColor.barChartCancelParcelForgroundColor,FontWeight.w700),),
-                                  ],
-                                ),
-                              )
                             ],
                           ),
-
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0,top: 16,),
-                            child: Expanded(child: Text('Date : 6 jan 2023 ',style: myStyleInter(12, AppColor.appPrimaryColor,FontWeight.w700),)),
-                          )
+                        ),
 
 
 
+                        SizedBox(height: 23,),
+
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+
+                              children: [
+
+                                Container(
+                                  height:size*(10/360) ,
+                                  width: size*(10/360),
+                                 // width: 10,
+                                  color: AppColor.barChartDelSucForgroundColor,
+                                ),
+                                SizedBox(height: 5,),
+
+                                Container(
+                                  height:size*(10/360) ,
+                                  width: size*(10/360),
+                                 // width: 10,
+                                  color: AppColor.barCharTotalPendinForgroundColor,
+                                ),
+
+                                SizedBox(height: 5,),
+
+
+
+
+                                Container(
+                                  height:size*(10/360) ,
+                                  //width: 10,
+                                  width: size*(10/360),
+                                  color: AppColor.barCharAsinPercelForgroundColor,
+                                ),
+
+                                SizedBox(height: 5,),
+
+
+
+                                Container(
+                                 height:size*(10/360) ,
+                                  width: size*(10/360),
+                                  //width: 10,
+                                  color: AppColor.barChartCancelParcelForgroundColor,
+                                ),
+
+
+                              ],
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15.0,right: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Total Delivered Parcel',style: myStyleInter(size*(12/360), AppColor.parcelStatementPageTextColor,FontWeight.w700),),
+
+
+                                  Text('Total Delivered Parcel',style: myStyleInter(size*(12/360), AppColor.parcelStatementPageTextColor,FontWeight.w700),),
+
+
+                                  Text('Total Assigned Parcel',style: myStyleInter(size*(12/360), AppColor.parcelStatementPageTextColor,FontWeight.w700),),
+
+
+                                  Text('Total Cancel Parcel',style: myStyleInter(size*(12/360), AppColor.parcelStatementPageTextColor,FontWeight.w700),),
+                                ],
+                              ),
+                            ),
+                            Column(
+                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(':',style: myStyleInter(size*(12/360), AppColor.barChartDelSucForgroundColor,FontWeight.w700)),
+                                Text(':',style: myStyleInter(size*(12/360), AppColor.barChartDelSucForgroundColor,FontWeight.w700)),
+                                Text(':',style: myStyleInter(size*(12/360), AppColor.barChartDelSucForgroundColor,FontWeight.w700)),
+                                Text(':',style: myStyleInter(size*(12/360), AppColor.barChartDelSucForgroundColor,FontWeight.w700)),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: Column(
+
+                                children: [
+                                  Text('5000',style: myStyleInter(size*(12/360), AppColor.barChartDelSucForgroundColor,FontWeight.w700),),
+                                  Text('5000',style: myStyleInter(size*(12/360), AppColor.barCharTotalPendinForgroundColor,FontWeight.w700),),
+                                  Text('5000',style: myStyleInter(size*(12/360), AppColor.barCharAsinPercelForgroundColor,FontWeight.w700),),
+                                  Text('5000',style: myStyleInter(size*(12/360), AppColor.barChartCancelParcelForgroundColor,FontWeight.w700),),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0,top: 16,bottom: 8),
+                          child: Text('Date : 6 jan 2023 ',style: myStyleInter(12, AppColor.appPrimaryColor,FontWeight.w700),),
+                        )
 
 
 
 
 
-                        ],
-                      ),
+
+
+
+                      ],
                     ),
                   )
                 ],
