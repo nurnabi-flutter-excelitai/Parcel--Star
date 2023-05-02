@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:parcel_star/reusable_widgets/reusable_statementscreen_container.dart';
 
-
 import '../../const/app_color.dart';
 import '../../const/text_style.dart';
 import '../../reusable_widgets/app_inputDecoration.dart';
@@ -16,53 +15,51 @@ class StatementScreen extends StatefulWidget {
 }
 
 class _StatementScreenState extends State<StatementScreen> {
-
   DateTime selectedDate = DateTime.now();
   TextEditingController fromDateController = TextEditingController();
   TextEditingController toDateController = TextEditingController();
 
-
-
   ///..........fromDate Method............
-  Future  _selectedFromDate(BuildContext context) async{
+  Future _selectedFromDate(BuildContext context) async {
     DateFormat formatter = DateFormat('dd/MM/yyyy');
     final DateTime? pickedFromDate = await showDatePicker(
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime(2020),
         lastDate: DateTime(2030));
-    if(pickedFromDate!=null){
+    if (pickedFromDate != null) {
       setState(() {
         selectedDate = pickedFromDate;
-        fromDateController.value = TextEditingValue(text: formatter.format(pickedFromDate) );
+        fromDateController.value =
+            TextEditingValue(text: formatter.format(pickedFromDate));
         //fromDateController.text = pickedFromDate.toString();
       });
     }
   }
 
-
   ///..........toDate Method............
-  Future  _selectedToDate(BuildContext context) async{
+  Future _selectedToDate(BuildContext context) async {
     DateFormat formatter = DateFormat('dd/MM/yyyy');
     final DateTime? pickedToDate = await showDatePicker(
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime(2020),
         lastDate: DateTime(2030));
-    if(pickedToDate!=null){
+    if (pickedToDate != null) {
       setState(() {
         selectedDate = pickedToDate;
-        toDateController.value = TextEditingValue(text: formatter.format(pickedToDate) );
+        toDateController.value =
+            TextEditingValue(text: formatter.format(pickedToDate));
         //fromDateController.text = pickedFromDate.toString();
       });
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size.width;
     return Scaffold(
-        //backgroundColor: AppColor.appBackgroundColor,
+      //backgroundColor: AppColor.appBackgroundColor,
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
@@ -80,410 +77,457 @@ class _StatementScreenState extends State<StatementScreen> {
           ),
         ),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 16.0, right: 16, top: 20, bottom: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-
-                    // ........first row .............
+          child: Column(children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 16.0, right: 16, top: 20, bottom: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // ........first row .............
 
 
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 10.0, top: 10, ),
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                  color: Color(0XFFF3F4F6),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              height: 200,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      'MERCHANT INFORMATION',
-                                      style: myStyleInter(
-                                          14,
-                                          AppColor.statementScreenTextColor,
-                                          FontWeight.w700),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.white.withOpacity(0.7),
-                                            border: Border.all(width: 0.07)),
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 10.0, top: 13),
-                                          child: Column(
-                                            children: [
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                // mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      const CircleAvatar(
-                                                        radius: 5,
-                                                        backgroundColor:
-                                                            Colors.red,
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets.only(
-                                                                left: 8.0),
-                                                        child: Text(
-                                                          'Merchant Name',
-                                                          style: myStyleInter(
-                                                              14,
-                                                              AppColor
-                                                                  .statementScreenTextColor,
-                                                              FontWeight.w400),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                      left: 30.0,
+                 ///......>>new code....<<
+
+                 /* Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width:size*(158/360),
+                        decoration: BoxDecoration(
+                          color: Colors.red
+                        ),
+                        child: Column(
+                          children: [
+                            Text('Mercent Information',style: myStyleInter(14, AppColor.appPrimaryColor,FontWeight.w700),),
+                            Container(
+                              width: size*(142/360),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.7),
+                                  border: Border.all(width: 0.07),
+                              ),
+
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      CircleAvatar(
+                                          radius: 5,
+                                          backgroundColor:Colors.red
+
+                                      ),
+
+                                      FittedBox(child: Text('Merchant Name',style: myStyleInter(14, AppColor.appSubTextColor),)),
+                                    ],
+                                  )
+
+                                ],
+                              ),
+
+                            )
+
+                            
+                          ],
+                        ),
+                        
+                      ),
+                      Container(
+                        child: Column(
+                          children: [
+
+                          ],
+                        ),
+                      ),
+
+                    ],
+                  ),*/
+
+
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 10.0,
+                            top: 10,
+                          ),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                color: Color(0XFFF3F4F6),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            height: 200,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'MERCHANT INFORMATION',
+                                    style: myStyleInter(
+                                        14,
+                                        AppColor.statementScreenTextColor,
+                                        FontWeight.w700),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.white.withOpacity(0.7),
+                                          border: Border.all(width: 0.07)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 13),
+                                        child: Column(
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              // mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    const CircleAvatar(
+                                                      radius: 5,
+                                                      backgroundColor:
+                                                          Colors.red,
                                                     ),
-                                                    child: Text(
-                                                      'MD. HASIB',
-                                                      style: myStyleInter(
-                                                          14,
-                                                          AppColor
-                                                              .statementScreenTextColor,
-                                                          FontWeight.w700),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                height: 16,
-                                              ),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                // mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      const CircleAvatar(
-                                                        radius: 5,
-                                                        backgroundColor:
-                                                            Colors.red,
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 8.0),
+                                                      child: Text(
+                                                        'Merchant Name',
+                                                        style: myStyleInter(
+                                                            14,
+                                                            AppColor
+                                                                .statementScreenTextColor,
+                                                            FontWeight.w400),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets.only(
-                                                                left: 8.0),
-                                                        child: Text(
-                                                          'Merchant Name',
-                                                          style: myStyleInter(
-                                                              14,
-                                                              AppColor
-                                                                  .statementScreenTextColor,
-                                                              FontWeight.w400),
-                                                        ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 30.0,
+                                                  ),
+                                                  child: Text(
+                                                    'MD. HASIB',
+                                                    style: myStyleInter(
+                                                        14,
+                                                        AppColor
+                                                            .statementScreenTextColor,
+                                                        FontWeight.w700),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 16,
+                                            ),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              // mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    const CircleAvatar(
+                                                      radius: 5,
+                                                      backgroundColor:
+                                                          Colors.red,
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 8.0),
+                                                      child: Text(
+                                                        'Merchant Name',
+                                                        style: myStyleInter(
+                                                            14,
+                                                            AppColor
+                                                                .statementScreenTextColor,
+                                                            FontWeight.w400),
                                                       ),
-                                                    ],
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                      left: 30.0,
                                                     ),
-                                                    child: Text(
-                                                      'MD. HASIB',
-                                                      style: myStyleInter(
-                                                          14,
-                                                          AppColor
-                                                              .statementScreenTextColor,
-                                                          FontWeight.w700),
-                                                    ),
+                                                  ],
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 30.0,
                                                   ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
+                                                  child: Text(
+                                                    'MD. HASIB',
+                                                    style: myStyleInter(
+                                                        14,
+                                                        AppColor
+                                                            .statementScreenTextColor,
+                                                        FontWeight.w700),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                    )
-                                  ],
-                                ),
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                           ),
                         ),
+                      ),
 
+                      SizedBox(
+                        width: 12,
+                      ),
 
+                      ///.....................date.......
 
-                        SizedBox(
-                          width: 12,
-                        ),
+                      Expanded(
+                        flex: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10.0, top: 10),
+                          child: Container(
+                            height: 200,
+                            decoration: const BoxDecoration(
+                                color: Color(0XFFF3F4F6),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 6.0, top: 10, right: 4),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'STATEMENT DATE',
+                                    style: myStyleInter(
+                                        14,
+                                        AppColor.statementScreenTextColor,
+                                        FontWeight.w700),
+                                  ),
 
+                                  const SizedBox(
+                                    height: 10,
+                                    //  width: 10,
+                                  ),
 
-                        ///.....................date.......
-
-
-                        Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 10.0, top: 10),
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                  color: Color(0XFFF3F4F6),
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                              height: 200,
-                              child:
-                              Padding(
-                                padding: const EdgeInsets.only(left: 6.0,top: 10,right: 4),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      'STATEMENT DATE',
-                                      style: myStyleInter(
-                                          14,
-                                          AppColor.statementScreenTextColor,
-                                          FontWeight.w700),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(5)),
+                                      border: Border.all(color: Colors.grey),
                                     ),
-
-                                    const SizedBox(
-                                      height: 10,
-                                      //  width: 10,
-                                    ),
-
-
-
-
-
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: const BorderRadius.all(Radius.circular(
-                                            5)),
-                                        border: Border.all(
-                                            color: Colors.grey),
-                                      ),
-                                      child: TextFormField(
+                                    child: TextFormField(
                                         controller: fromDateController,
                                         //editing controller of this TextField
-                                        decoration:  appTextFormFiledInputDecoration(),
+                                        decoration:
+                                            appTextFormFiledInputDecoration(),
                                         readOnly: true,
-                                        onTap: (){
+                                        onTap: () {
                                           _selectedFromDate(context);
-                                        }
+                                        }),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                    //  width: 10,
+                                  ),
+
+                                  // to date textformfiled...............................
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(5)),
+                                      border: Border.all(color: Colors.grey),
+                                    ),
+                                    child: TextFormField(
+                                        controller: toDateController,
+                                        //editing controller of this TextField
+                                        decoration:
+                                            appTextFormFiledInputDecoration(),
+                                        readOnly: true,
+                                        onTap: () {
+                                          _selectedToDate(context);
+                                        }),
+                                  ),
+
+                                  SizedBox(
+                                    height: 12,
+                                    //  width: 10,
+                                  ),
+
+                                  Expanded(
+                                    child: SizedBox(
+                                      width: double.infinity,
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 8.0),
+                                        child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  AppColor.appButtonColor,
+                                            ),
+                                            onPressed: () {},
+                                            child: Text(
+                                              'Search',
+                                              style: myStyleInter(
+                                                  14,
+                                                  Colors.white,
+                                                  FontWeight.w700),
+                                            )),
                                       ),
                                     ),
-                                     const SizedBox(
-                                      height: 10,
-                                      //  width: 10,
-                                    ),
-
-                                    // to date textformfiled...............................
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: const BorderRadius.all(Radius.circular(
-                                            5)),
-                                        border: Border.all(
-                                            color: Colors.grey),
-                                      ),
-                                      child: TextFormField(
-                                          controller: toDateController,
-                                          //editing controller of this TextField
-                                          decoration:  appTextFormFiledInputDecoration(),
-                                          readOnly: true,
-                                          onTap: (){
-                                            _selectedToDate(context);
-                                          }
-                                      ),
-                                    ),
-
-                                     SizedBox(
-                                      height: 12,
-                                      //  width: 10,
-                                    ),
-
-                                    Expanded(
-                                      child: SizedBox(
-                                        width: double.infinity,
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(bottom: 8.0),
-                                          child: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                backgroundColor: AppColor.appButtonColor,
-                                              ),
-                                              onPressed: (){}, child: Text('Search',style: myStyleInter(14, Colors.white,FontWeight.w700),)),
-                                        ),
-                                      ),
-                                    )
-
-
-
-
-
-                                  ],
-                                ),
+                                  )
+                                ],
                               ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
+                      ),
+                    ],
+                  ),
 
 
-                    //...........2nd row.............
 
-                    Text(
-                      'STATEMENT DATE',
-                      style:
-                          myStyleInter(16, Color(0xFF0B4461), FontWeight.w400),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      '20-11-2000 TO 30-11-2022',
-                      style:
-                          myStyleInter(16, Color(0xFF0B4461), FontWeight.w700),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Row(
-                      children: const [
-                        Expanded(
-                          flex: 1,
-                          child: StatementScreenContainer(
-                            text: 'Today Collection',
-                            color: Color(0XFFBDD7EE),
-                            num: '5000',
-                          ),
+
+
+
+                   SizedBox(
+                    height: 15,
+                  ),
+
+                  //...........2nd row.............
+
+                  Text(
+                    'STATEMENT DATE',
+                    style: myStyleInter(16, Color(0xFF0B4461), FontWeight.w400),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    '20-11-2000 TO 30-11-2022',
+                    style: myStyleInter(16, Color(0xFF0B4461), FontWeight.w700),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Row(
+                    children: const [
+                      Expanded(
+                        flex: 1,
+                        child: StatementScreenContainer(
+                          text: 'Today Collection',
+                          color: Color(0XFFBDD7EE),
+                          num: '5000',
                         ),
-                        SizedBox(
-                          width: 12,
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: StatementScreenContainer(
+                          text: 'Total Collection',
+                          color: Color(0XFFBDD7EE),
+                          num: '3',
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: StatementScreenContainer(
-                            text: 'Today Parcel Complete',
-                            color: Color(0XFFBDD7EE),
-                            num: '30',
-                          ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Row(
+                    children: const [
+                      Expanded(
+                        flex: 1,
+                        child: StatementScreenContainer(
+                          text: 'Today Parcel Complete',
+                          color: Color(0XFFC6E0B4),
+                          num: '30',
                         ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Row(
-                      children: const [
-                        Expanded(
-                          flex: 1,
-                          child: StatementScreenContainer(
-                            text: 'Today Parcel Complete',
-                            color: Color(0XFFC6E0B4),
-                            num: '30',
-                          ),
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: StatementScreenContainer(
+                          text: 'Total Parcel Complete',
+                          color: Color(0XFFC6E0B4),
+                          num: '30',
                         ),
-                        SizedBox(
-                          width: 12,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Row(
+                    children: const [
+                      Expanded(
+                        flex: 1,
+                        child: StatementScreenContainer(
+                          text: 'Today Parcel Return',
+                          color: Color(0XFFFFE699),
+                          num: '1',
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: StatementScreenContainer(
-                            text: 'Today Parcel Complete',
-                            color: Color(0XFFC6E0B4),
-                            num: '30',
-                          ),
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: StatementScreenContainer(
+                          text: 'Total Parcel Return 6',
+                          color: Color(0XFFFFE699),
+                          num: '30',
                         ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Row(
-                      children: const [
-                        Expanded(
-                          flex: 1,
-                          child: StatementScreenContainer(
-                            text: 'Today Parcel Complete',
-                            color: Color(0XFFFFE699),
-                            num: '30',
-                          ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Row(
+                    children: const [
+                      Expanded(
+                        flex: 1,
+                        child: StatementScreenContainer(
+                          text: 'Today Delivery Charges',
+                          color: Color(0XFFC6E0B4),
+                          num: '140',
                         ),
-                        SizedBox(
-                          width: 12,
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: StatementScreenContainer(
+                          text: 'Today Delivery Charges',
+                          color: Color(0XFFC6E0B4),
+                          num: '1810',
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: StatementScreenContainer(
-                            text: 'Today Parcel Complete',
-                            color: Color(0XFFFFE699),
-                            num: '30',
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Row(
-                      children: const [
-                        Expanded(
-                          flex: 1,
-                          child: StatementScreenContainer(
-                            text: 'Today Parcel Complete',
-                            color: Color(0XFFC6E0B4),
-                            num: '30',
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: StatementScreenContainer(
-                            text: 'Today Parcel Complete',
-                            color: Color(0XFFC6E0B4),
-                            num: '30',
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              StatementListTable(),
-
-            ]
-          ),
+            ),
+            StatementListTable(),
+          ]),
         ));
   }
-
-
-
-
 }
-
 
 /*List<CustomerList> getCustomerListData() {
   return [
