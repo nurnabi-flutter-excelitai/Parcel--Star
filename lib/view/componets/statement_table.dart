@@ -33,6 +33,7 @@ class _StatementListTableState extends State<StatementListTable> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size.width;
     return SfDataGrid(
       shrinkWrapRows: true,
       isScrollbarAlwaysShown: true,
@@ -43,6 +44,7 @@ class _StatementListTableState extends State<StatementListTable> {
       //columnWidthMode: ColumnWidthMode.fill,
       columns: <GridColumn>[
         GridColumn(
+           width: size*(71/360),
             columnName: 'DATE & TIME',
             label: Container(
                decoration: BoxDecoration(
@@ -59,7 +61,8 @@ class _StatementListTableState extends State<StatementListTable> {
             )
         ),
         GridColumn(
-            columnWidthMode: ColumnWidthMode.auto,
+             width: size*(68/360),
+            //columnWidthMode: ColumnWidthMode.auto,
             columnName: 'invoiceNumber',
             label: Container(
                 color: Color(0xFF0B4461),
@@ -68,7 +71,8 @@ class _StatementListTableState extends State<StatementListTable> {
                 child: Text('INVOICE NO',
                   style: myStyleInter(12, Colors.white, FontWeight.w600),))),
         GridColumn(
-            columnWidthMode: ColumnWidthMode.auto,
+            width: size*(68/360),
+            //columnWidthMode: ColumnWidthMode.auto,
             columnName: 'customerName',
             label: Container(
                 color: Color(0xFF0B4461),
@@ -119,7 +123,8 @@ class _StatementListTableState extends State<StatementListTable> {
                   style: myStyleInter(12, Colors.white, FontWeight.w600),))),
         GridColumn(
             //columnWidthMode: ColumnWidthMode.auto,
-            minimumWidth: 20,
+            //minimumWidth: 20,
+            width: size*(71/360),
             columnName: 'balance',
             label: Container(
                 color: Color(0xFF0B4461),
@@ -129,7 +134,8 @@ class _StatementListTableState extends State<StatementListTable> {
                   style: myStyleInter(12, Colors.white, FontWeight.w600),))),
         GridColumn(
             columnWidthMode: ColumnWidthMode.auto,
-            minimumWidth: 20,
+            //minimumWidth: 20,
+            width: size*(64/360),
             columnName: 'wdBymer',
             label: Container(
                 decoration: BoxDecoration(

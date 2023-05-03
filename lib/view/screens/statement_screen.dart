@@ -87,60 +87,20 @@ class _StatementScreenState extends State<StatementScreen> {
                   // ........first row .............
 
 
-                 ///......>>new code....<<
 
-                 /* Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width:size*(158/360),
-                        decoration: BoxDecoration(
-                          color: Colors.red
-                        ),
-                        child: Column(
-                          children: [
-                            Text('Mercent Information',style: myStyleInter(14, AppColor.appPrimaryColor,FontWeight.w700),),
-                            Container(
-                              width: size*(142/360),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.7),
-                                  border: Border.all(width: 0.07),
-                              ),
+                 /*Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                   children: [
+                     Container(
+                       width: size*(158/360),
+                       decoration: BoxDecoration(
+                         color: AppColor.appContainerColor,
+                         //borderRadius: BorderRadius.circular(radius)
+                       ),
+                     )
 
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      CircleAvatar(
-                                          radius: 5,
-                                          backgroundColor:Colors.red
-
-                                      ),
-
-                                      FittedBox(child: Text('Merchant Name',style: myStyleInter(14, AppColor.appSubTextColor),)),
-                                    ],
-                                  )
-
-                                ],
-                              ),
-
-                            )
-
-                            
-                          ],
-                        ),
-                        
-                      ),
-                      Container(
-                        child: Column(
-                          children: [
-
-                          ],
-                        ),
-                      ),
-
-                    ],
-                  ),*/
+                   ],
+                 ),*/
 
 
                   Row(
