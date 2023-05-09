@@ -5,6 +5,7 @@ import 'package:parcel_star/reusable_widgets/reusable_statementscreen_container.
 import '../../const/app_color.dart';
 import '../../const/text_style.dart';
 import '../../reusable_widgets/app_inputDecoration.dart';
+import '../../reusable_widgets/appbutton_style.dart';
 import '../componets/statement_table.dart';
 
 class StatementScreen extends StatefulWidget {
@@ -57,7 +58,10 @@ class _StatementScreenState extends State<StatementScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size.width;
+    final size = MediaQuery
+        .of(context)
+        .size
+        .width;
     return Scaffold(
       //backgroundColor: AppColor.appBackgroundColor,
         appBar: AppBar(
@@ -86,269 +90,370 @@ class _StatementScreenState extends State<StatementScreen> {
                 children: [
                   // ........first row .............
 
-
-
-                 /*Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     Container(
-                       width: size*(158/360),
-                       decoration: BoxDecoration(
-                         color: AppColor.appContainerColor,
-                         //borderRadius: BorderRadius.circular(radius)
-                       ),
-                     )
-
-                   ],
-                 ),*/
-
-
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 10.0,
-                            top: 10,
-                          ),
-                          child: Container(
-                            decoration: const BoxDecoration(
-                                color: Color(0XFFF3F4F6),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                            height: 200,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    'MERCHANT INFORMATION',
-                                    style: myStyleInter(
-                                        14,
-                                        AppColor.statementScreenTextColor,
-                                        FontWeight.w700),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.7),
-                                          border: Border.all(width: 0.07)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 10.0, top: 13),
-                                        child: Column(
+
+                      Container(
+                        padding: EdgeInsets.only(top: 10,bottom: 12),
+                        width: size * (158 / 360),
+                        //height: size*(160/800),
+                        decoration: const BoxDecoration(
+                            color: Color(0XFFF3F4F6),
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(10))),
+
+                        child: Column(
+                          children: [
+                            Text(
+                              'MERCHANT INFORMATION',
+                              style: myStyleInter(
+                                  size * (14 / 360),
+                                  AppColor.statementScreenTextColor,
+                                  FontWeight.w700),
+                            ),
+
+                            Container(
+                              margin: EdgeInsets.only(top: 8,left: 6,right: 6),
+                              decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.7),
+                                  border: Border.all(width: 0.07)),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 10.0,top: 13,bottom: 8),
+                                child: Column(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      // mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Row(
                                           children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              // mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    const CircleAvatar(
-                                                      radius: 5,
-                                                      backgroundColor:
-                                                          Colors.red,
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 8.0),
-                                                      child: Text(
-                                                        'Merchant Name',
-                                                        style: myStyleInter(
-                                                            14,
-                                                            AppColor
-                                                                .statementScreenTextColor,
-                                                            FontWeight.w400),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                    left: 30.0,
-                                                  ),
-                                                  child: Text(
-                                                    'MD. HASIB',
-                                                    style: myStyleInter(
-                                                        14,
-                                                        AppColor
-                                                            .statementScreenTextColor,
-                                                        FontWeight.w700),
-                                                  ),
-                                                ),
-                                              ],
+                                            const CircleAvatar(
+                                              radius: 5,
+                                              backgroundColor: Colors.red,
                                             ),
-                                            const SizedBox(
-                                              height: 16,
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              // mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    const CircleAvatar(
-                                                      radius: 5,
-                                                      backgroundColor:
-                                                          Colors.red,
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 8.0),
-                                                      child: Text(
-                                                        'Merchant Name',
-                                                        style: myStyleInter(
-                                                            14,
-                                                            AppColor
-                                                                .statementScreenTextColor,
-                                                            FontWeight.w400),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                    left: 30.0,
-                                                  ),
-                                                  child: Text(
-                                                    'MD. HASIB',
-                                                    style: myStyleInter(
-                                                        14,
-                                                        AppColor
-                                                            .statementScreenTextColor,
-                                                        FontWeight.w700),
-                                                  ),
-                                                ),
-                                              ],
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0),
+                                              child: Text(
+                                                'Merchant Name',
+                                                style: myStyleInter(
+                                                    size * (14 / 360),
+                                                    AppColor
+                                                        .statementScreenTextColor,
+                                                    FontWeight.w400),
+                                              ),
                                             ),
                                           ],
                                         ),
-                                      ),
+                                        Center(
+                                          child: Text(
+                                            'MD. HASIB',
+                                            style: myStyleInter(
+                                                size * (14 / 360),
+                                                AppColor
+                                                    .statementScreenTextColor,
+                                                FontWeight.w700),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  )
-                                ],
+                                    SizedBox(height: size*(8/360),),
+
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      // mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            const CircleAvatar(
+                                              radius: 5,
+                                              backgroundColor: Colors.red,
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0),
+                                              child: Text(
+                                                'Merchant Name',
+                                                style: myStyleInter(
+                                                    size * (14 / 360),
+                                                    AppColor
+                                                        .statementScreenTextColor,
+                                                    FontWeight.w400),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Center(
+                                          child: Text(
+                                            'MD. HASIB',
+                                            style: myStyleInter(
+                                                size * (14 / 360),
+                                                AppColor
+                                                    .statementScreenTextColor,
+                                                FontWeight.w700),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ),
+                            )
+                          ],
                         ),
                       ),
 
-                      SizedBox(
-                        width: 12,
-                      ),
 
-                      ///.....................date.......
 
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10.0, top: 10),
-                          child: Container(
-                            height: 200,
-                            decoration: const BoxDecoration(
-                                color: Color(0XFFF3F4F6),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 6.0, top: 10, right: 4),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    'STATEMENT DATE',
-                                    style: myStyleInter(
-                                        14,
-                                        AppColor.statementScreenTextColor,
-                                        FontWeight.w700),
-                                  ),
 
-                                  const SizedBox(
-                                    height: 10,
-                                    //  width: 10,
-                                  ),
 
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(5)),
-                                      border: Border.all(color: Colors.grey),
+                   SizedBox(width: size*(12/360),),
+
+
+                      // Container(
+                      //   padding: EdgeInsets.only(top: 10),
+                      //   width: size * (158 / 360),
+                      //   //height: size*(160/800),
+                      //   decoration: BoxDecoration(
+                      //       color: Color(0XFFF3F4F6),
+                      //       borderRadius:
+                      //       BorderRadius.all(Radius.circular(10))),
+                      //
+                      //   child: Column(
+                      //     children: [
+                      //       Text(
+                      //         'MERCHANT INFORMATION',
+                      //         style: myStyleInter(
+                      //             size * (14 / 360),
+                      //             AppColor.statementScreenTextColor,
+                      //             FontWeight.w700),
+                      //       ),
+                      //       SizedBox(
+                      //         height: 8,
+                      //       ),
+                      //       Padding(
+                      //         padding: EdgeInsets.only(
+                      //             left: 6, right: 6, bottom: 10),
+                      //         child: Container(
+                      //           decoration: BoxDecoration(
+                      //               color: Colors.white.withOpacity(0.7),
+                      //               border: Border.all(width: 0.07)),
+                      //           child: Padding(
+                      //             padding: const EdgeInsets.only(
+                      //                 left: 10.0, top: 8),
+                      //             child: Column(
+                      //               children: [
+                      //                 Column(
+                      //                   crossAxisAlignment:
+                      //                   CrossAxisAlignment.start,
+                      //                   // mainAxisAlignment: MainAxisAlignment.center,
+                      //                   children: [
+                      //                     Row(
+                      //                       children: [
+                      //                         const CircleAvatar(
+                      //                           radius: 5,
+                      //                           backgroundColor: Colors.red,
+                      //                         ),
+                      //                         Padding(
+                      //                           padding: const EdgeInsets.only(
+                      //                               left: 8.0),
+                      //                           child: Text(
+                      //                             'Merchant Name',
+                      //                             style: myStyleInter(
+                      //                                 size * (14 / 360),
+                      //                                 AppColor
+                      //                                     .statementScreenTextColor,
+                      //                                 FontWeight.w400),
+                      //                           ),
+                      //                         ),
+                      //                       ],
+                      //                     ),
+                      //                     Padding(
+                      //                       padding: const EdgeInsets.only(
+                      //                         left: 30.0,
+                      //                       ),
+                      //                       child: Text(
+                      //                         'MD. HASIB',
+                      //                         style: myStyleInter(
+                      //                             size * (14 / 360),
+                      //                             AppColor
+                      //                                 .statementScreenTextColor,
+                      //                             FontWeight.w700),
+                      //                       ),
+                      //                     ),
+                      //                   ],
+                      //                 ),
+                      //                 const SizedBox(
+                      //                   height: 14,
+                      //                 ),
+                      //                 Column(
+                      //                   crossAxisAlignment:
+                      //                   CrossAxisAlignment.start,
+                      //                   // mainAxisAlignment: MainAxisAlignment.center,
+                      //                   children: [
+                      //                     Row(
+                      //                       children: [
+                      //                         const CircleAvatar(
+                      //                           radius: 5,
+                      //                           backgroundColor: Colors.red,
+                      //                         ),
+                      //                         Padding(
+                      //                           padding: const EdgeInsets.only(
+                      //                               left: 8.0),
+                      //                           child: Text(
+                      //                             'Merchant Name',
+                      //                             style: myStyleInter(
+                      //                                 size * (14 / 360),
+                      //                                 AppColor
+                      //                                     .statementScreenTextColor,
+                      //                                 FontWeight.w400),
+                      //                           ),
+                      //                         ),
+                      //                       ],
+                      //                     ),
+                      //                     Padding(
+                      //                       padding: const EdgeInsets.only(
+                      //                         left: 30.0,
+                      //                       ),
+                      //                       child: Text(
+                      //                         'MD. HASIB',
+                      //                         style: myStyleInter(
+                      //                             size * (14 / 360),
+                      //                             AppColor
+                      //                                 .statementScreenTextColor,
+                      //                             FontWeight.w700),
+                      //                       ),
+                      //                     ),
+                      //                   ],
+                      //                 ),
+                      //               ],
+                      //             ),
+                      //           ),
+                      //         ),
+                      //       )
+                      //     ],
+                      //   ),
+                      // ),
+
+
+
+
+
+                      Container(
+                        padding: EdgeInsets.only(top: 10,bottom: 12),
+                        width: size * (158 / 360),
+
+                        decoration: BoxDecoration(
+                            color: Color(0XFFF3F4F6),
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(10))),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              'STATEMENT DATE',
+                              style: myStyleInter(
+                                  size * (14 / 360),
+                                  AppColor.statementScreenTextColor,
+                                  FontWeight.w700),
+                            ),
+                            SizedBox(height: 4,),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0,right: 8),
+                              child: SizedBox(
+                                height: size*(30/360),
+                                child:  TextField(
+
+                                  controller: fromDateController,
+                                  style: myStyleInter(size*(14/360), Colors.black,FontWeight.normal),
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    contentPadding: EdgeInsets.only(bottom: 15,left: 15),
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.all(Radius.circular(5))
                                     ),
-                                    child: TextFormField(
-                                        controller: fromDateController,
-                                        //editing controller of this TextField
-                                        decoration:
-                                            appTextFormFiledInputDecoration(),
-                                        readOnly: true,
-                                        onTap: () {
-                                          _selectedFromDate(context);
-                                        }),
+                                    label: Text('From date',style: myStyleInter(size*(13/360), AppColor.parcelStatementPageTextColor),),
+                                    //isDense: true,                      // Added this
                                   ),
-                                  const SizedBox(
-                                    height: 10,
-                                    //  width: 10,
-                                  ),
-
-                                  // to date textformfiled...............................
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(5)),
-                                      border: Border.all(color: Colors.grey),
-                                    ),
-                                    child: TextFormField(
-                                        controller: toDateController,
-                                        //editing controller of this TextField
-                                        decoration:
-                                            appTextFormFiledInputDecoration(),
-                                        readOnly: true,
-                                        onTap: () {
-                                          _selectedToDate(context);
-                                        }),
-                                  ),
-
-                                  SizedBox(
-                                    height: 12,
-                                    //  width: 10,
-                                  ),
-
-                                  Expanded(
-                                    child: SizedBox(
-                                      width: double.infinity,
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 8.0),
-                                        child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor:
-                                                  AppColor.appButtonColor,
-                                            ),
-                                            onPressed: () {},
-                                            child: Text(
-                                              'Search',
-                                              style: myStyleInter(
-                                                  14,
-                                                  Colors.white,
-                                                  FontWeight.w700),
-                                            )),
-                                      ),
-                                    ),
-                                  )
-                                ],
+                                  onTap: (){
+                                    _selectedFromDate(context);
+                                  },
+                                ),
                               ),
                             ),
-                          ),
+                            SizedBox(height: 8,),
+                            Padding(
+                              padding: const EdgeInsets.only(left:6,right: 6),
+                              child: SizedBox(
+                                height: size*(30/360),
+                                child:  TextField(
+
+                                  controller: toDateController,
+                                  style: myStyleInter(size*(14/360), Colors.black,FontWeight.normal),
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    contentPadding: EdgeInsets.only(bottom: 15,left: 15),
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.all(Radius.circular(5))
+                                    ),
+                                    label: Text('To date',style: myStyleInter(size*(13/360), AppColor.parcelStatementPageTextColor),),
+                                    //isDense: true,                      // Added this
+                                  ),
+                                  onTap: (){
+                                    _selectedToDate(context);
+                                  },
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 12,),
+                            SizedBox(
+                              width: size*(143/360),
+                              child: ElevatedButton(
+                                style: appButtonStyle(),
+                                  onPressed: (){}, child: Text('Search')),
+                            ),
+
+
+
+
+
+
+
+
+
+
+
+
+                            // Container(
+                            //   alignment: Alignment.center,
+                            //   decoration: BoxDecoration(
+                            //     color: Colors.white,
+                            //     borderRadius: const BorderRadius.all(
+                            //         Radius.circular(5)),
+                            //     border: Border.all(color: Colors.grey),
+                            //   ),
+                            //   width: size * (158 / 360),
+                            //   child: TextFormField(
+                            //     controller: fromDateController,
+                            //     //editing controller of this TextField
+                            //
+                            //     readOnly: true,
+                            //       onTap: () {
+                            //         _selectedFromDate(context);
+                            //       }),
+                            //   ),
+
+
+
+                          ],
                         ),
                       ),
                     ],
@@ -359,28 +464,36 @@ class _StatementScreenState extends State<StatementScreen> {
 
 
 
-                   SizedBox(
-                    height: 15,
+
+
+
+
+
+
+
+
+                  SizedBox(
+                    height: size*(15/360),
                   ),
 
                   //...........2nd row.............
 
                   Text(
                     'STATEMENT DATE',
-                    style: myStyleInter(16, Color(0xFF0B4461), FontWeight.w400),
+                    style: myStyleInter(size*(16/360), Color(0xFF0B4461), FontWeight.w400),
                   ),
                   const SizedBox(
                     height: 5,
                   ),
                   Text(
                     '20-11-2000 TO 30-11-2022',
-                    style: myStyleInter(16, Color(0xFF0B4461), FontWeight.w700),
+                    style: myStyleInter(size*(16/360), Color(0xFF0B4461), FontWeight.w700),
                   ),
-                  const SizedBox(
-                    height: 16,
+                   SizedBox(
+                    height: size*(16/360),
                   ),
                   Row(
-                    children: const [
+                    children:  [
                       Expanded(
                         flex: 1,
                         child: StatementScreenContainer(
@@ -390,7 +503,7 @@ class _StatementScreenState extends State<StatementScreen> {
                         ),
                       ),
                       SizedBox(
-                        width: 12,
+                        width: size*(12/360),
                       ),
                       Expanded(
                         flex: 1,
@@ -402,11 +515,11 @@ class _StatementScreenState extends State<StatementScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 16,
+                  SizedBox(
+                    height: size*(16/360),
                   ),
                   Row(
-                    children: const [
+                    children:  [
                       Expanded(
                         flex: 1,
                         child: StatementScreenContainer(
@@ -416,7 +529,7 @@ class _StatementScreenState extends State<StatementScreen> {
                         ),
                       ),
                       SizedBox(
-                        width: 12,
+                        width:size*(12/360),
                       ),
                       Expanded(
                         flex: 1,
@@ -428,11 +541,11 @@ class _StatementScreenState extends State<StatementScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 16,
+                   SizedBox(
+                    height: size*(16/360),
                   ),
                   Row(
-                    children: const [
+                    children:  [
                       Expanded(
                         flex: 1,
                         child: StatementScreenContainer(
@@ -442,7 +555,7 @@ class _StatementScreenState extends State<StatementScreen> {
                         ),
                       ),
                       SizedBox(
-                        width: 12,
+                        width: size*(12/360),
                       ),
                       Expanded(
                         flex: 1,
@@ -454,11 +567,11 @@ class _StatementScreenState extends State<StatementScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 16,
+                  SizedBox(
+                    height: size*(16/360),
                   ),
                   Row(
-                    children: const [
+                    children:  [
                       Expanded(
                         flex: 1,
                         child: StatementScreenContainer(
@@ -468,7 +581,7 @@ class _StatementScreenState extends State<StatementScreen> {
                         ),
                       ),
                       SizedBox(
-                        width: 12,
+                        width: size*(12/360),
                       ),
                       Expanded(
                         flex: 1,

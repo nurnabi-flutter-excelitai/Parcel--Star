@@ -18,6 +18,7 @@ class StatementScreenContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size.width;
     return Container(
       height: 90,
       decoration: BoxDecoration(
@@ -30,10 +31,10 @@ class StatementScreenContainer extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 17.0),
-              child: Text(text,style: myStyleInter(14, AppColor.statementScreenTextColor,FontWeight.w400),),
+              child: Text(text,style: myStyleInter(size*(14/360), AppColor.statementScreenTextColor,FontWeight.w400),),
             ),
             SizedBox(height: 3,),
-            Text(num,style: myStyleInter(14, AppColor.statementScreenTextColor,FontWeight.w700),)
+            Text(num,style: myStyleInter(size*(14/360), AppColor.statementScreenTextColor,FontWeight.w700),)
           ],
         ),
       ),

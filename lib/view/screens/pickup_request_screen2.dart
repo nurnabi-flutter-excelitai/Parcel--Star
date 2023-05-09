@@ -30,6 +30,7 @@ class _PickUpRequestScreen2State extends State<PickUpRequestScreen2> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomPopupMenu(
             controller: controller,
