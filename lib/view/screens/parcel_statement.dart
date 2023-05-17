@@ -41,6 +41,11 @@ class _ParcelStatementScreenState extends State<ParcelStatementScreen> {
             size: 20,
           ),
         ),
+        actions: [
+          TextButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> StatementScreen()));
+          }, child: Text('Next',style: TextStyle(color: Colors.black),))
+        ],
 
       ),
       body: SingleChildScrollView(

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:parcel_star/view/screens/barchart_screen.dart';
 import 'package:parcel_star/view/screens/parcel_statement.dart';
-import 'package:parcel_star/view/screens/pickup_request_screen.dart';
 import 'package:parcel_star/view/screens/pickup_request_screen2.dart';
 import 'package:parcel_star/view/screens/statement_screen.dart';
 
-import 'view/screens/test_screen.dart';
+
 
 
 
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: StatementScreen(),
+      home: PickUpRequestScreen2(),
     );
   }
 }
